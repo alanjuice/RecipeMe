@@ -1,0 +1,17 @@
+<div>
+  <h3>My Recipes</h3>
+    {%if recipes%}
+    <ol>
+    {%for recipe in recipes%}
+        <li>
+          <h4>{{recipe.recipe_name}}</h4>
+          <p><b>Difficulty</b><br>{{recipe.difficulty}}</p>
+          <p><b>Description</b><br>{{recipe.description}}</p>
+          <p><b>Intructions</b><br>{{recipe.instructions}}</p>
+        </li>
+    
+    {%endfor%}
+    </ol>
+    {%endif%}
+  <a href={% url 'recipe:create' %}>Create a Recipe</a>
+</div>

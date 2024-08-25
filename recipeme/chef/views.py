@@ -1,8 +1,13 @@
 from django.shortcuts import render,redirect
-from .forms import UserSignupForm,UserLoginForm
-from .models import Chef
+
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.decorators import login_required
+
+from .forms import UserSignupForm,UserLoginForm
+
+from .models import Chef
+from recipe.models import Recipe
+
 
 
 def login_user(request):
@@ -70,4 +75,8 @@ def signup_user(request):
 
 @login_required
 def account(request):
-    return render(request,"chef/account.html")
+    chef_recipes=Recipe.objects.filter(created_by=request.user)
+    context={
+        "recipes":chef_recipes
+    }
+    return render(request,"chef/account.html",context)

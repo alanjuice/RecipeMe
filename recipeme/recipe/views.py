@@ -17,10 +17,12 @@ def create(request):
             #getting fields
             name=formdata.cleaned_data["name"]
             difficulty=formdata.cleaned_data["difficulty"]
+            instructions=formdata.cleaned_data["instructions"]
+            description=formdata.cleaned_data["description"]
 
             chef=Chef.objects.get(username=request.user.username)
 
-            recipe = Recipe(recipe_name=name,difficulty=difficulty,created_by=chef)
+            recipe = Recipe(recipe_name=name,difficulty=difficulty,created_by=chef,instructions=instructions,description=description)
             recipe.save()
 
             return redirect("chef:account")
