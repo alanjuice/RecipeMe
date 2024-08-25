@@ -1,4 +1,7 @@
 <div>
+    {% if error%}
+    <div>{{error.message}}</div>
+    {%endif%}
     <form action={% url 'chef:login_user' %} method="POST">
       {% csrf_token %}
       {{ form}}
