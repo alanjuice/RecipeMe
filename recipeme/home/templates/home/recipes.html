@@ -1,0 +1,17 @@
+{%extends 'base.html' %} {%load static%}
+<div>{%block title%}Recipes{%endblock%}</div>
+{%block content%} {%for recipe in recipes%}
+<h1>Recipe</h1>
+<ul>
+  <h4>{{recipe.recipe_name}}</h4>
+</ul>
+
+{%endfor%} {%if recipes.has_previous%}
+<a href="{% url 'home:recipes_view' page_no=recipes.previous_page_number %}"
+  >Previous</a
+>
+{%endif%} {%if recipes.has_next%}
+<a href="{% url 'home:recipes_view' page_no=recipes.next_page_number %}"
+  >Next</a
+>
+{%endif%} {%endblock%}
