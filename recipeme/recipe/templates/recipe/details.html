@@ -1,0 +1,10 @@
+<div>
+  <h2>{{recipe.recipe_name}}</h2>
+  <p>{{recipe.description}}</p>
+  <p>{{recipe.difficulty}}</p>
+  <p>{{recipe.instructions}}</p>
+  {%if editable%}
+  <a href="{% url 'recipe:edit' recipe_id=recipe.id%}">Edit</a>
+  <a href="{% url 'recipe:delete' recipe_id=recipe.id%}">Delete</a>
+  {%endif%}
+</div>

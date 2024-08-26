@@ -5,9 +5,7 @@
     {%for recipe in recipes%}
         <li>
           <h4>{{recipe.recipe_name}}</h4>
-          <p><b>Difficulty</b><br>{{recipe.difficulty}}</p>
-          <p><b>Description</b><br>{{recipe.description}}</p>
-          <p><b>Intructions</b><br>{{recipe.instructions}}</p>
+          <a href={% url 'recipe:detail_recipe' recipe_id=recipe.id %}>View Recipe</a>
         </li>
     
     {%endfor%}
